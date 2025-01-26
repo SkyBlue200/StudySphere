@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<div class="main">
+  <h1>Quiz Results</h1>
+  <p>Your Score: {{ score }} / {{ total }}</p>
+  <br />
+  {% if incorrect_answers %}
+  <h2>Questions You Got Wrong:</h2>
+  <ol style="margin-left: 1em; margin-top: 1em">
+    {% for item in incorrect_answers %}
+    <li>
+      <strong>Question:</strong> {{ item.question }} <br />
+      <strong>Your Answer:</strong> {{ item.user_answer if item.user_answer else
+      "No answer selected" }} <br />
+      <strong>Correct Answer:</strong> {{ item.correct_answer }}
+    </li>
+    <br />
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p>Great job! You got all the questions right! 🎉</p>
+  {% endif %}
+  <br />
+  <button class="button">
+    <a href="{{ url_for('views.test', subject=subject) }}" class="test"
+      >Try Again</a
+    >
+  </button>
+</div>
+{% endblock %}

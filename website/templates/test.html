@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<div class="main">
+  <form
+    action="{{ url_for('views.submit_quiz', subject=subject) }}"
+    method="POST"
+  >
+    {% for question in questions %}
+    <div class="question">
+      <h4>{{ loop.index }}. {{ question.question }}</h4>
+      <input
+        type="radio"
+        name="question_{{ question.id }}"
+        value="{{ question.option_1 }}"
+      />
+      {{ question.option_1 }}<br />
+      <input
+        type="radio"
+        name="question_{{ question.id }}"
+        value="{{ question.option_2 }}"
+      />
+      {{ question.option_2 }}<br />
+      <input
+        type="radio"
+        name="question_{{ question.id }}"
+        value="{{ question.option_3 }}"
+      />
+      {{ question.option_3 }}<br />
+      <input
+        type="radio"
+        name="question_{{ question.id }}"
+        value="{{ question.option_4 }}"
+      />
+      {{ question.option_4 }}<br />
+    </div>
+    <br />
+    {% endfor %}
+    <button class="button" type="submit">Submit Quiz</button>
+  </form>
+</div>
+{% endblock %}
