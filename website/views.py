@@ -10,7 +10,7 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html", user=current_user, first_name=current_user.first_name)
 
-@views.route('/test/<subject>')
+@views.route('/test/<subject>', methods=['POST'])
 @login_required
 def test(subject):
     subject_classes = {
@@ -18,8 +18,12 @@ def test(subject):
         'chemistry': Chemistry,
         'maths': Maths
     }
-    questions = subject_classes[subject.lower()].query.all()
-    return render_template('test.html',questions = questions, subject=subject, user=current_user)
+    if subject.lower() not in subject_classes:
+        return "Subject not found", 404
+    subject_model = subject_classes[subject.lower()]
+    selected_chapters = request.form.getlist('selected_chapters')
+    questions = subject_model.query.filter(subject_model.chapter.in_(selected_chapters)).all()
+    return render_template('test.html', questions=questions, subject=subject, user=current_user)
 
 @views.route('/submit_quiz/<subject>', methods=['POST'])
 def submit_quiz(subject):

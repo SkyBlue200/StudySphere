@@ -317,3 +317,19 @@ h4 {
 .user {
   width: 100%;
 }
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  height: 35px; /* Ensure it looks like a single-line dropdown */
+  overflow-y: hidden; /* Hide extra options initially */
+}
+
+select[multiple]:focus {
+  height: auto; /* Expand when the user clicks or focuses */
+  max-height: 100px; /* Limit the height to avoid taking up too much space */
+  overflow-y: scroll; /* Add scroll for multiple options */
+}

@@ -13,39 +13,44 @@
   <div class="subjects">
     <div class="subject">
       <h3>Physics</h3>
-      <ol>
-        <li>Waves</li>
-        <li>Simple harmonic motion</li>
-      </ol>
-      <button class="button">
-        <a href="{{ url_for('views.test', subject='physics') }}" class="test"
-          >Take test</a
-        >
-      </button>
+      <form
+        action="{{ url_for('views.test', subject='physics') }}"
+        method="POST"
+      >
+        <label for="physics-chapters">Select Chapters:</label>
+        <select id="physics-chapters" name="selected_chapters" multiple>
+          <option value="waves">Waves</option>
+          <option value="Simple harmonic motion">Simple harmonic motion</option>
+        </select>
+        <button type="submit" class="button">Take Test</button>
+      </form>
     </div>
+
     <div class="subject">
       <h3>Chemistry</h3>
-      <ol>
-        <li>General organic chemistry</li>
-        <li>Chemical bonding</li>
-      </ol>
-      <button class="button">
-        <a href="{{ url_for('views.test', subject='chemistry') }}" class="test"
-          >Take test</a
-        >
-      </button>
+      <form
+        action="{{ url_for('views.test', subject='chemistry') }}"
+        method="POST"
+      >
+        <label for="chemistry-chapters">Select Chapters:</label>
+        <select id="chemistry-chapters" name="selected_chapters" multiple>
+          <option value="goc">General organic chemistry</option>
+          <option value="Chemical bonding">Chemical bonding</option>
+        </select>
+        <button type="submit" class="button">Take Test</button>
+      </form>
     </div>
+
     <div class="subject">
       <h3>Mathematics</h3>
-      <ol>
-        <li>Sequenece and series</li>
-        <li>Complex numbers</li>
-      </ol>
-      <button class="button">
-        <a href="{{ url_for('views.test', subject='maths') }}" class="test"
-          >Take test</a
-        >
-      </button>
+      <form action="{{ url_for('views.test', subject='maths') }}" method="POST">
+        <label for="maths-chapters">Select Chapters:</label>
+        <select id="maths-chapters" name="selected_chapters" multiple>
+          <option value="Sequence and series">Sequence and series</option>
+          <option value="Complex numbers">Complex numbers</option>
+        </select>
+        <button type="submit" class="button">Take Test</button>
+      </form>
     </div>
   </div>
 </div>
