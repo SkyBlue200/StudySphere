@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="main">
-  <h1>Quiz Results</h1>
+  <h1>Test Results</h1>
   <p>Your Score: {{ score }} / {{ total }}</p>
   <br />
   {% if incorrect_answers %}
@@ -20,10 +20,5 @@
   <p>Great job! You got all the questions right! 🎉</p>
   {% endif %}
   <br />
-  <button class="button">
-    <a href="{{ url_for('views.test', subject=subject) }}" class="test"
-      >Try Again</a
-    >
-  </button>
 </div>
 {% endblock %}

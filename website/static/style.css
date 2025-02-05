@@ -324,12 +324,19 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
-  height: 35px; /* Ensure it looks like a single-line dropdown */
   overflow-y: hidden; /* Hide extra options initially */
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  margin-top: 1em;
 }
 
 select[multiple]:focus {
   height: auto; /* Expand when the user clicks or focuses */
   max-height: 100px; /* Limit the height to avoid taking up too much space */
-  overflow-y: scroll; /* Add scroll for multiple options */
+  overflow-y: hidden; /* Add scroll for multiple options */
 }
